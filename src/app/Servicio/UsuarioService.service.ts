@@ -9,11 +9,16 @@ import { Usuario, PaginatedResponse } from '../Entidades/Usuario';
 })
 export class UsuarioService {
     private urlBase = 'http://localhost:8080/dieta-app/usuarios-pageable';
+    private urlDelete = 'http://localhost:8080/dieta-app/usuario/delete';
 
     constructor(private http: HttpClient) { }
 
     obtenerUsuarios(page: number, size: number): Observable<PaginatedResponse<Usuario>> {
         const params = new HttpParams().set('page', page).set('size', size);
         return this.http.get<PaginatedResponse<Usuario>>(this.urlBase, { params });
-      }
+    }
+
+    eliminarUsuario( id : number ) : Observable<Object>{
+        return this.http.delete(`${this.urlDelete}/${id}`)
+    }
 }

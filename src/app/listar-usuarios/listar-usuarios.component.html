@@ -6,7 +6,9 @@
         <th scope="col">Nombre</th>
         <th scope="col">Correo</th>
         <th scope="col">Rol</th>
-        <th scope="col"></th>
+        <th scope="col">VER</th>
+        <th scope="col">EDITAR</th>
+        <th scope="col">ELIMINAR</th>
       </tr>
     </thead>
     <tbody>
@@ -18,21 +20,20 @@
           <button class="btn btn-primary">
             <i class="bi bi-person-video3"></i>
           </button>
+        </td>
+        <td>
           <button class="btn btn-success">
             <i class="bi bi-pen"></i>
           </button>
-          <button class="btn btn-danger">
+        </td>
+        <td>
+          <button (click)="eliminarUsuario(usuario.id)" class="btn btn-danger">
             <i class="bi bi-trash3"></i>
           </button>
         </td>
       </tr>
     </tbody>
   </table>
-
-
-
-
-
 
   <div class="d-flex justify-content-between align-items-center">
     <div>
@@ -47,7 +48,8 @@
         </option>
       </select>
     </div>
-    <pagination class="pagination"
+    <pagination
+      class="pagination"
       [maxSize]="7"
       [totalItems]="this.totalElements"
       [(ngModel)]="this.page"

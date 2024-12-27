@@ -53,4 +53,17 @@ export class ListarUsuariosComponent {
     this.obtenerUsuarios();
     
   }
+
+
+  eliminarUsuario( id : number ) {
+    this.usuarioServicio.eliminarUsuario(id).subscribe(
+      {
+        next: (datos) => this.obtenerUsuarios(),
+        error: (errores) => console.log(errores)
+      }
+    )
+  }
+
+
+
 }
