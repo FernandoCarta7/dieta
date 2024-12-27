@@ -1,0 +1,19 @@
+button{
+    margin: 0.1rem;
+}
+table{
+    margin-top: 2rem;
+}
+h2{
+    margin-top: 2rem;
+    color: #213555;
+    text-align: center;
+}
+th{
+    color: #9B7EBD;
+    text-align: center;
+}
+td{
+    color: #F5EFE7;
+    text-align: center;
+}
