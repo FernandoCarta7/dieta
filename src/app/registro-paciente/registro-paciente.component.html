@@ -1,119 +1,42 @@
 <div class="position-absolute top-50 start-50 translate-middle">
-  <div class="shadow p-3 mb-5 bg-body-tertiary rounded ">
-    <h3>Registrar paciente</h3>
+  <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+    <div>
+      <h3>Registrar Usuario</h3>
 
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1"
-        ><i class="bi bi-person-bounding-box"></i
-      ></span>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Nombre usuario"
-        aria-label="nombre_usuario"
-        name="nombre_usuario"
-        aria-describedby="basic-addon1"
-      />
-      <span class="input-group-text" id="basic-addon2"
-        ><i class="bi bi-envelope"></i
-      ></span>
-      <input
-        type="email"
-        class="form-control"
-        placeholder="Ingresa tu correo"
-        aria-label="email"
-        name="email"
-        aria-describedby="basic-addon2"
-      />
-    </div>
+      <div class="input-group mb-3">
 
-    <!--CONTRASEÑA-->
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon2"
-        ><i class="bi bi-incognito"></i
-      ></span>
-      <input
-        type="password"
-        class="form-control"
-        placeholder="Ingresa tu contraseña"
-        aria-label="contrasena"
-        name="contrasena"
-        aria-describedby="basic-addon2"
-      />
-      <span class="input-group-text" id="basic-addon2"
-        ><i class="bi bi-incognito"></i
-      ></span>
-      <input
-        type="password"
-        class="form-control"
-        placeholder="Ingresa de nuevo tu contraseña"
-        aria-label="contrasenaValidacion"
-        name="contrasenaValidacion"
-        aria-describedby="basic-addon2"
-      />
-    </div>
-    <!--ALTURA Y PESO-->
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon2"
-        ><i class="bi bi-speedometer2"></i
-      ></span>
-      <input
-        type="number"
-        class="form-control"
-        placeholder="Ingresa tu peso"
-        aria-label="peso"
-        name="peso"
-        aria-describedby="basic-addon2"
-      />
-      <span class="input-group-text" id="basic-addon2"
-        ><i class="bi bi-rulers"></i
-      ></span>
-      <input
-        type="number"
-        class="form-control"
-        placeholder="Ingresa tu altura"
-        aria-label="altura"
-        name="altura"
-        aria-describedby="basic-addon2"
-      />
+        <!-- NOMBRE DE USUARIO -->
+        <span class="input-group-text"><i class="bi bi-person-bounding-box"></i></span>
+        <input type="text" class="form-control" placeholder="Nombre usuario" aria-label="nombre_usuario"
+          name="nombre_usuario" aria-describedby="basic-addon1" [(ngModel)]="usuario.nombre" />
+        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+
+        <!--EMAIL-->
+        <input type="email" class="form-control" placeholder="Ingresa tu correo" aria-label="email" name="email"
+          aria-describedby="basic-addon2" [(ngModel)]="usuario.email" />
+      </div>
+
+      <!--CONTRASEÑA-->
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon3"><i class="bi bi-incognito"></i></span>
+        <input type="password" class="form-control" placeholder="Ingresa tu contraseña" aria-label="contrasena"
+          name="contrasena" aria-describedby="basic-addon2" [(ngModel)]="usuario.contrasena" />
+        <span class="input-group-text" id="basic-addon4"><i class="bi bi-incognito"></i></span>
+        <input type="password" class="form-control" placeholder="Ingresa de nuevo tu contraseña"
+          aria-label="contrasenaValidacion" name="contrasenaValidacion" aria-describedby="basic-addon2"
+          [(ngModel)]="contrasenaValidar" />
+      </div>
     </div>
 
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1"
-        ><i class="bi bi-gender-ambiguous"></i
-      ></span>
-      <select class="form-select form-select" aria-label="Small select example">
-        <option selected>Seleccione su género...</option>
-        <option value="MASCULINO">MASCULINO</option>
-        <option value="FEMENINO">FEMENINO</option>
-        <!--
-          <option value="3">Three</option>
-          -->
-      </select>
-    </div>
-
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon2"
-        ><i class="bi bi-calendar2-day"></i
-      ></span>
-      <input
-        type="date"
-        class="form-control"
-        placeholder="Ingresa tu fecha nacimiento"
-        aria-label="fecha_nacimiento"
-        name="fecha_nacimiento"
-        aria-describedby="basic-addon2"
-      />
-    </div>
-
-    <div class="input-group mb-3">
-      
-      <textarea placeholder="Antecedentes médicos..." id="antecedentes" class="form-control" name="antecedentes" aria-label="With textarea"></textarea>
-    </div>
 
     <div>
-      <button class="btn btn-primary"><i class="bi bi-floppy"></i> Registrar</button>
-      <button class="btn btn-danger"><i class="bi bi-caret-left-fill"></i> Regresar</button>
+      <button (click)="onSubmitUsuario()" class="btn btn-primary">
+        <i class="bi bi-floppy"></i> Registrar
+      </button>
+      <button type="reset" class="btn btn-danger">
+        <i class="bi bi-caret-left-fill"></i> Regresar
+      </button>
     </div>
+
   </div>
 </div>

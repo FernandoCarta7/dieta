@@ -18,7 +18,7 @@
         <td>{{ usuario.rol }}</td>
         <td>
           <button class="btn btn-primary">
-            <i class="bi bi-person-video3"></i>
+            <i class="bi bi-person-vcard"></i>
           </button>
         </td>
         <td>
@@ -38,24 +38,14 @@
   <div class="d-flex justify-content-between align-items-center">
     <div>
       <label for="size">Mostrar:</label>
-      <select
-        id="size"
-        [(ngModel)]="this.size"
-        (change)="onSizeChange(this.size)"
-      >
+      <select id="size" [(ngModel)]="this.size" (change)="onSizeChange(this.size)">
         <option *ngFor="let option of [5, 10, 15]" [value]="option">
           {{ option }}
         </option>
       </select>
     </div>
-    <pagination
-      class="pagination"
-      [maxSize]="7"
-      [totalItems]="this.totalElements"
-      [(ngModel)]="this.page"
-      [itemsPerPage]="this.size"
-      (pageChanged)="onPageChange($event.page)"
-    >
+    <pagination class="pagination" [maxSize]="7" [totalItems]="this.totalElements" [(ngModel)]="this.page"
+      [itemsPerPage]="this.size" (pageChanged)="onPageChange($event.page)">
     </pagination>
   </div>
 </div>
