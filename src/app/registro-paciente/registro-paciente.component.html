@@ -6,9 +6,8 @@
       <div class="input-group mb-3">
 
         <!-- NOMBRE DE USUARIO -->
-        <span class="input-group-text"><i class="bi bi-person-bounding-box"></i></span>
-        <input type="text" class="form-control" placeholder="Nombre usuario" aria-label="nombre_usuario"
-          name="nombre_usuario" aria-describedby="basic-addon1" [(ngModel)]="usuario.nombre" />
+        
+        
         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
 
         <!--EMAIL-->
@@ -33,7 +32,7 @@
       <button (click)="onSubmitUsuario()" class="btn btn-primary">
         <i class="bi bi-floppy"></i> Registrar
       </button>
-      <button type="reset" class="btn btn-danger">
+      <button type="reset" class="btn btn-danger" (click)="irListadoUsuarios()">
         <i class="bi bi-caret-left-fill"></i> Regresar
       </button>
     </div>

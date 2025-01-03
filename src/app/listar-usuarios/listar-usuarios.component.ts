@@ -64,6 +64,10 @@ export class ListarUsuariosComponent {
     )
   }
 
+  goToRegistro(){
+    this.route.navigate(['registro-paciente']);
+  }
+
 
 
 }

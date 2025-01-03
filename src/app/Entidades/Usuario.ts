@@ -1,9 +1,8 @@
-export class Usuario{
-    id : number;
-    nombre : String;
-    email : String;
-    contrasena : String;
-    rol : String;
+export class Usuario {
+    id: number;
+    email: String;
+    contrasena: String;
+    rol: String;
 }
 export interface PaginatedResponse<T> {
     content: T[];
@@ -11,4 +10,4 @@ export interface PaginatedResponse<T> {
     totalPages: number;
     number: number;
     size: number;
-  }
+}
