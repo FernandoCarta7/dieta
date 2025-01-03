@@ -68,6 +68,9 @@ export class ListarUsuariosComponent {
     this.route.navigate(['registro-paciente']);
   }
 
+  editarProducto( id:number ){
+    this.route.navigate(['editar-usuario', id]);
+  }
 
 
 }

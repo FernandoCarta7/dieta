@@ -1,13 +1,13 @@
 <div class="position-absolute top-50 start-50 translate-middle">
   <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
     <div>
-      <h3>Registrar Usuario</h3>
+      <h3>Editar Usuario</h3>
 
       <div class="input-group mb-3">
 
         <!-- NOMBRE DE USUARIO -->
-        
-        
+
+
         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
 
         <!--EMAIL-->
@@ -25,14 +25,25 @@
           aria-label="contrasenaValidacion" name="contrasenaValidacion" aria-describedby="basic-addon2"
           [(ngModel)]="contrasenaValidar" />
       </div>
+
+      
+
+
+    <div class="input-group mb-3">
+      <select class="form-select" id="rol" [(ngModel)]="usuario.rol">
+        <option value="PACIENTE">Paciente</option>
+        <option value="NUTRICIONISTA">Nutricionista</option>
+        <option value="ADMINISTRADOR" disabled>Administrador</option>
+      </select>
+      <label class="input-group-text" for="rol">Rol</label>
     </div>
 
 
     <div>
       <button (click)="onSubmitUsuario()" class="btn btn-primary">
-        <i class="bi bi-floppy"></i> Registrar
+        <i class="bi bi-floppy"></i> Actualizar
       </button>
-      <button type="reset" class="btn btn-warning" (click)="irListadoUsuarios()">
+      <button type="reset" class="btn btn-danger" (click)="irListadoUsuarios()">
         <i class="bi bi-card-list"></i> Listado
       </button>
     </div>

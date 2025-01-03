@@ -22,7 +22,7 @@
           </button>
         </td>
         <td>
-          <button class="btn btn-success">
+          <button class="btn btn-success" (click)="editarProducto(usuario.id)" >
             <i class="bi bi-pen"></i>
           </button>
         </td>
@@ -52,7 +52,7 @@
 
 <div class="container">
   <button class="btn btn-primary" (click)="goToRegistro()">
-    <span class="badge bg-primary">Crear usuario</span>
+    <span class="badge"><i class="bi bi-person-plus-fill"></i> Nuevo usuario</span>
   </button>
 
 </div>

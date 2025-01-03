@@ -12,16 +12,11 @@ export class UsuarioService {
     private urlBase = 'http://localhost:8080/dieta-app/usuarios-pageable';
     private urlDelete = 'http://localhost:8080/dieta-app/usuario/delete';
     private urlAgregar = 'http://localhost:8080/dieta-app/usuario/agregar';
-    private urlAgregarPaciente = 'http://localhost:8080/dieta-app/paciente/agregar-paciente';
-    private urlUltimoUsuario = 'http://localhost:8080/dieta-app/usuario/ultimo';
+    private urlEditarUsuario = 'http://localhost:8080/dieta-app/usuario/editar';
+    private urlGetUsuario = 'http://localhost:8080/dieta-app/usuario/obtenerUsuario';
 
 
-    constructor(private http: HttpClient) { }
-
-
-    ultimoUsuario: Usuario = new Usuario();
-
-
+    constructor(private http: HttpClient) { } 
 
     obtenerUsuarios(page: number, size: number): Observable<PaginatedResponse<Usuario>> {
         const params = new HttpParams().set('page', page).set('size', size);
@@ -38,8 +33,12 @@ export class UsuarioService {
         //this.http.post(`${this.urlAgregarPaciente}/${id}`, paciente);
     }
 
-    obtenerUltimoUsuario(): Observable<Usuario> {
-        return this.http.get<Usuario>(this.urlUltimoUsuario);
+    getUsuario(id : number)  { 
+        return this.http.get<Usuario>(`${this.urlGetUsuario}/${id}`);
+    }
+
+    editarUsuario(id : number, usuario: Usuario) : Observable<Object> {
+        return this.http.put(`${this.urlEditarUsuario}/${id}`, usuario);
 
     }
 
