@@ -8,12 +8,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'registro-paciente',
+  selector: 'registro-usuario',
   imports: [CommonModule,FormsModule],
-  templateUrl: './registro-paciente.component.html',
-  styleUrl: './registro-paciente.component.css'
+  templateUrl: './registro-usuario.component.html',
+  styleUrl: './registro-usuario.component.css'
 })
-export class RegistroPacienteComponent {
+export class RegistroUsuarioComponent {
 
   usuario: Usuario = new Usuario();
   ultimoUsuario : Usuario = new Usuario();
