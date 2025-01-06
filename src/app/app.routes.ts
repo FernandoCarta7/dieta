@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
+import { RegistroUsuarioComponent } from './USUARIO/registro-usuario/registro-usuario.component';
 
-import { ListarUsuariosComponent } from './listar-usuarios/listar-usuarios.component';
-import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
-import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.component';
-import { RegitroPacienteComponent } from './regitro-paciente/regitro-paciente.component';
-import { EditarPacienteComponent } from './editar-paciente/editar-paciente.component';
+import { ListarUsuariosComponent } from './USUARIO/listar-usuarios/listar-usuarios.component';
+import { EditarUsuarioComponent } from './USUARIO/editar-usuario/editar-usuario.component';
+import { ListadoPacienteComponent } from './PACIENTE/listado-paciente/listado-paciente.component';
+import { RegitroPacienteComponent } from './PACIENTE/regitro-paciente/regitro-paciente.component';
+import { EditarPacienteComponent } from './PACIENTE/editar-paciente/editar-paciente.component';
 
 export const routes: Routes = [
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Paciente } from '../Entidades/Paciente';
-import { PacienteService } from '../Servicio/PacienteService.service';
+import { Paciente } from '../../Entidades/Paciente';
+import { PacienteService } from '../../Servicio/PacienteService.service';
 import { Router } from '@angular/router';
 import { response } from 'express';
 import { FormsModule } from '@angular/forms';

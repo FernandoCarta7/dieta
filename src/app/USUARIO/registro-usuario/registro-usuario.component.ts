@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../Entidades/Usuario';
-import { Paciente } from '../Entidades/Paciente';
-import { PacienteService } from '../Servicio/PacienteService.service';
-import { UsuarioService } from '../Servicio/UsuarioService.service';
+import { Usuario } from '../../Entidades/Usuario';
+import { Paciente } from '../../Entidades/Paciente';
+import { PacienteService } from '../../Servicio/PacienteService.service';
+import { UsuarioService } from '../../Servicio/UsuarioService.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

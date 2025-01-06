@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Paciente } from '../Entidades/Paciente';
+import { Paciente } from '../../Entidades/Paciente';
 
 import { Router } from '@angular/router';
-import { UsuarioService } from '../Servicio/UsuarioService.service';
-import { Usuario } from '../Entidades/Usuario';
+import { UsuarioService } from '../../Servicio/UsuarioService.service';
+import { Usuario } from '../../Entidades/Usuario';
 import { of } from 'rxjs';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { PacienteService } from '../Servicio/PacienteService.service';
+import { PacienteService } from '../../Servicio/PacienteService.service';
 @Component({
   selector: 'listar-usuarios',
   imports: [CommonModule, FormsModule, PaginationModule],
@@ -65,7 +65,7 @@ export class ListarUsuariosComponent {
   }
 
   goToRegistro(){
-    this.route.navigate(['registro-paciente']);
+    this.route.navigate(['registro-usuario']);
   }
 
   editarProducto( id:number ){
