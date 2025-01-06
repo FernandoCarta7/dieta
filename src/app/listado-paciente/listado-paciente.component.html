@@ -1,0 +1,36 @@
+<div class="container top1">
+
+    <div class="row row-cols-1 row-cols-md-3 g-4" >
+        <div class="col" *ngFor="let paciente of pacientes">
+            <div class="card bgBlue">
+                <!--Descomentar para agregar imagen-->
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <h5 class="card-title">{{ paciente.primer_nombre + " " + paciente.primer_apellido }}</h5>
+                    <p class="card-text">Altura: {{ paciente.altura }} cm</p>
+                    <p class="card-text">Peso: {{ paciente.peso }} kg</p>
+                    <p class="card-text">Genero: {{ paciente.genero }}</p>
+                    <p class="card-text">Antecedentes médicos: {{ paciente.antecedentes_medicos }}</p>
+                    <button class="btn btn-success"><i class="bi bi-pencil-square"></i> Editar</button>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <label for="size">Mostrar:</label>
+        <select id="size" [(ngModel)]="this.size" (change)="onSizeChange(this.size)">
+            <option *ngFor="let option of [5, 10, 15]" [value]="option">
+                {{ option }}
+            </option>
+        </select>
+    </div>
+    <pagination class="pagination" [maxSize]="7" [totalItems]="this.totalElements" [(ngModel)]="this.page"
+    [itemsPerPage]="this.size" (pageChanged)="onPageChange($event.page)">
+    </pagination>
+</div>
+</div>
