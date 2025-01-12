@@ -1,5 +1,6 @@
 button{
     margin: 0.1rem;
+    color:#EAD8B1;
 }
 table{
     margin-top: 2rem;
@@ -10,10 +11,15 @@ h2{
     text-align: center;
 }
 th{
-    color: #9B7EBD;
-    text-align: center;
+    color: #000;
+    text-align: center;    
 }
 td{
-    color: #F5EFE7;
+    color: #213555;
     text-align: center;
+}
+.bg-blue-dark{
+    background-color: #001F3F ;
+    color:#EAD8B1;
+    
 }

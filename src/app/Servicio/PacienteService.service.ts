@@ -9,29 +9,39 @@ import { PaginatedResponse, Usuario } from '../Entidades/Usuario';
   providedIn: 'root',
 })
 export class PacienteService {
-  
+
   private urlBase = 'http://localhost:8080/dieta-app/pacientes-pageable';
   private urlAgregarPaciente = 'http://localhost:8080/dieta-app/paciente/agregar-paciente';
   private urlDelete = 'http://localhost:8080/dieta-app/paciente/delete';
   private urlGetPaciente = 'http://localhost:8080/dieta-app/paciente/obtenerPaciente';
+  private urlGetPacientePorIdUsuario = 'http://localhost:8080/dieta-app/paciente/obtenerPacienteIdUsuario';
+  private urlEditar = 'http://localhost:8080/dieta-app/editar-paciente'
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  obtenerPacientes( page:number,size:number ):Observable<PaginatedResponse<Paciente>>{
-    const params = new HttpParams().set('page',page).set('size',size);
+  obtenerPacientes(page: number, size: number): Observable<PaginatedResponse<Paciente>> {
+    const params = new HttpParams().set('page', page).set('size', size);
 
-    return this.http.get<PaginatedResponse<Paciente>>(this.urlBase, {params});
+    return this.http.get<PaginatedResponse<Paciente>>(this.urlBase, { params });
   }
 
-  eliminarPaciente(id : number) : Observable<Object>{
+  eliminarPaciente(id: number): Observable<Object> {
     return this.http.delete(`${this.urlDelete}/${id}`);
   }
 
-  getPaciente(id : number)  { 
+  getPaciente(id: number) {
     return this.http.get<Usuario>(`${this.urlGetPaciente}/${id}`);
-}
+  }
 
-  agregarPaciente( paciente : Paciente ) : Observable<Object> {
-    return this.http.post(this.urlAgregarPaciente, paciente)
+  agregarPaciente(paciente: Paciente, usuarioid : number): Observable<Object> {
+    return this.http.post(`${this.urlAgregarPaciente}/${usuarioid}`, paciente)
+  }
+
+  getPacientePorUsuario(id_usuario: number) {
+    return this.http.get<Paciente>(`${this.urlGetPacientePorIdUsuario}/${id_usuario}`);
+  }
+
+  editarPaciente( idUsuario, pacienteEditar : Paciente ){
+    return this.http.put(`${this.urlEditar}/${idUsuario}`,pacienteEditar)
   }
 }

@@ -23,9 +23,10 @@ export class ListarUsuariosComponent {
   size: number = 10;
   totalElements: number = 0;
 
-  constructor(private pacienteServicio: PacienteService,
+  constructor(
     private route: Router,
-    private usuarioServicio: UsuarioService) { }
+    private usuarioServicio: UsuarioService,
+    private pacienteServicio: PacienteService) { }
 
   ngOnInit() {
     //Cargamos los productos
@@ -70,6 +71,10 @@ export class ListarUsuariosComponent {
 
   editarProducto( id:number ){
     this.route.navigate(['editar-usuario', id]);
+  }
+
+  verPaciente( id:number ){
+    this.route.navigate(['editar-paciente', id]);
   }
 
 

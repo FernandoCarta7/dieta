@@ -1,1 +1,86 @@
-<p>editar-paciente works!</p>
+<br>
+<div class="container">
+    <h3>Paciente a editar: <span>{{paciente.primer_nombre}}  {{paciente.primer_apellido}}</span></h3>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Peso</span>
+        <input  type="number" 
+                class="form-control" 
+                aria-label="peso" 
+                name="peso" 
+                [(ngModel)]="paciente.peso">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Altura</span>
+        <input  type="text" 
+                class="form-control" 
+                aria-label="altura" 
+                name="altura" 
+                [(ngModel)]="paciente.altura">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Primer nombre</span>
+        <input  type="text" 
+                class="form-control" 
+                aria-label="primer_nombre" 
+                name="primer_nombre" 
+                [(ngModel)]="paciente.primer_nombre">
+        <span class="input-group-text">Segundo nombre</span>
+        <input  type="text" 
+                class="form-control" 
+                aria-label="segundo_nombre" 
+                name="segundo_nombre" 
+                [(ngModel)]="paciente.segundo_nombre">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Primer apellido</span>
+        <input  type="text" 
+                class="form-control" 
+                aria-label="primer_apellido" 
+                name="primer_apellido" 
+                [(ngModel)]="paciente.primer_apellido">
+        <span class="input-group-text">Segundo apellido</span>
+        <input  type="text" 
+                class="form-control" 
+                aria-label="segundo_apellido" 
+                name="segundo_apellido" 
+                [(ngModel)]="paciente.segundo_apellido">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Antecedentes medicos</span>
+        <textarea 
+                type="text" 
+                class="form-control" 
+                aria-label="antecedentes_medicos"
+                 name="antecedentes_medicos" 
+                [(ngModel)]="paciente.antecedentes_medicos"></textarea>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Fecha de nacimiento</span>
+        <input 
+        type="date" 
+        class="form-control" 
+        aria-label="fecha_nacimiento" 
+        name="fecha_nacimiento" 
+        [(ngModel)]="paciente.fecha_nacimiento">
+    </div>
+    <div class="input-group mb-3">
+        <select class="form-select" 
+        aria-label="Default select example" 
+        aria-label="genero" 
+        name="genero" 
+        [(ngModel)]="paciente.genero">
+            <option selected>Seleccione su género...</option>
+            <option value="1">MASCULINO</option>
+            <option value="2">FEMENINO</option>
+        </select>
+    </div>
+    <div>
+        <button *ngIf="bandera"  class="btn bg-blue-dark" (click)="onSubmitEditar()" ><i class="bi bi-floppy"></i> Guardar</button>
+        <button *ngIf="!bandera"  class="btn btn-success" (click)="onSubmit()" ><i class="bi bi-floppy"></i> Guardar</button>
+    </div>
+</div>
