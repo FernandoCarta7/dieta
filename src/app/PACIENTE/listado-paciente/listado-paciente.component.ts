@@ -51,4 +51,8 @@ export class ListadoPacienteComponent {
     
   }
 
+  verPaciente( id:number ){
+    this.router.navigate(['editar-paciente', id]);
+  }
+
 }

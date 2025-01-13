@@ -7,11 +7,12 @@
                 <!--<img src="..." class="card-img-top" alt="...">-->
                 <div class="card-body">
                     <h5 class="card-title">{{ paciente.primer_nombre + " " + paciente.primer_apellido }}</h5>
-                    <p class="card-text">Altura: {{ paciente.altura }} cm</p>
-                    <p class="card-text">Peso: {{ paciente.peso }} kg</p>
-                    <p class="card-text">Genero: {{ paciente.genero }}</p>
-                    <p class="card-text">Antecedentes médicos: {{ paciente.antecedentes_medicos }}</p>
-                    <button class="btn btn-success"><i class="bi bi-pencil-square"></i> Editar</button>
+                    <p class="card-text">Altura: <span>{{ paciente.altura }} cm</span></p>
+                    <p class="card-text">Peso: <span>{{ paciente.peso }} kg</span></p>
+                    <p class="card-text">Genero: <span>{{ paciente.genero }}</span></p>
+                    <p class="card-text">Antecedentes médicos: <span>{{ paciente.antecedentes_medicos }}</span></p>
+                    <button class="btn btn-success" (click)="verPaciente(paciente.id)"><i class="bi bi-pencil-square"></i> Editar</button>
+                    <button class="btn btn-danger"><i class="bi bi-trash"></i> Eliminar</button>
                 </div>
             </div>
         </div>

@@ -74,13 +74,12 @@
         aria-label="genero" 
         name="genero" 
         [(ngModel)]="paciente.genero">
-            <option selected>Seleccione su género...</option>
-            <option value="1">MASCULINO</option>
-            <option value="2">FEMENINO</option>
+            <option value="Masculino">MASCULINO</option>
+            <option value="Feminino">FEMENINO</option>
         </select>
     </div>
     <div>
-        <button *ngIf="bandera"  class="btn bg-blue-dark" (click)="onSubmitEditar()" ><i class="bi bi-floppy"></i> Guardar</button>
-        <button *ngIf="!bandera"  class="btn btn-success" (click)="onSubmit()" ><i class="bi bi-floppy"></i> Guardar</button>
+        <button *ngIf="!bandera"  class="btn bg-blue-dark" (click)="onSubmitEditar()" ><i class="bi bi-floppy"></i> Guardar</button>
+        <button *ngIf="bandera"  class="btn btn-success" (click)="onSubmit()" ><i class="bi bi-floppy"></i> Guardar</button>
     </div>
 </div>

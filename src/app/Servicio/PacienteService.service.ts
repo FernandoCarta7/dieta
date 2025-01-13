@@ -30,7 +30,7 @@ export class PacienteService {
   }
 
   getPaciente(id: number) {
-    return this.http.get<Usuario>(`${this.urlGetPaciente}/${id}`);
+    return this.http.get<Paciente>(`${this.urlGetPaciente}/${id}`);
   }
 
   agregarPaciente(paciente: Paciente, usuarioid : number): Observable<Object> {

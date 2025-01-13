@@ -1,6 +1,6 @@
 export class Paciente{
     id : number;
-    usuario_id : number;
+    usuarioid : number;
     peso : number;
     altura : number;
     primer_nombre : String;

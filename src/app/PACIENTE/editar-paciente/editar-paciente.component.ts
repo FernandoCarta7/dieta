@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { error } from 'console';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Usuario } from '../../Entidades/Usuario';
+import { UsuarioService } from '../../Servicio/UsuarioService.service';
 
 @Component({
   selector: 'app-editar-paciente',
@@ -15,31 +17,53 @@ import { CommonModule } from '@angular/common';
 export class EditarPacienteComponent {
 
   paciente: Paciente = new Paciente();
+  //paciente2: Paciente = new Paciente();
   id_usuario: number;
+  id: number;
   pacienteBuscar: Paciente = new Paciente();
-  bandera = false;
+  bandera = true;
 
   constructor(private pacienteServicio: PacienteService,
     private router: Router,
-    private ruta: ActivatedRoute
+    private ruta: ActivatedRoute,
+    private usuarioServicio : UsuarioService
   ) { }
 
   ngOnInit() {
-    this.id_usuario = this.ruta.snapshot.params['id'];
-    this.pacienteServicio.getPacientePorUsuario(this.id_usuario).subscribe(
-      {
-        next: (datos) => {
-          this.paciente = datos;
-          if (this.paciente != null || this.paciente == undefined) {
-            this.bandera = false;
+    this.id_usuario = this.ruta.snapshot.params['id_usuario'];
+    this.id = this.ruta.snapshot.params['id'];
+
+    if (this.id_usuario === undefined || this.id_usuario === null) {
+      this.pacienteServicio.getPaciente(this.id).subscribe(
+        {
+          next: (datos) => {
             this.paciente = new Paciente();
-          } else {
-            this.bandera = true
-          }
-        },
-        error: (errores: any) => console.log(errores)
-      }
-    );
+            this.paciente = datos;
+            this.id_usuario = this.paciente.usuarioid;
+            this.bandera = true; 
+          },
+          error: (errores: any) => console.log(errores)
+        }
+      );
+    } else {
+      this.pacienteServicio.getPacientePorUsuario(this.id_usuario).subscribe(
+        {
+          next: (datos) => {
+            this.paciente = new Paciente();
+            this.paciente = datos;
+            this.bandera = false;        
+          },
+          error: (errores: any) => console.log(errores)
+        }
+      );
+    }
+
+
+
+
+
+
+
   }
   guardarPacienteEditar() {
     this.pacienteServicio.editarPaciente(this.id_usuario, this.paciente).subscribe(
@@ -48,12 +72,12 @@ export class EditarPacienteComponent {
         error: errores => console.log('No es un error, es una oportunidad de mejora')
       }
     )
-    this.pacienteServicio.editarPaciente(this.id_usuario,this.paciente);
+    this.pacienteServicio.editarPaciente(this.id_usuario, this.paciente);
 
   }
 
   guardarPaciente() {
-    this.pacienteServicio.agregarPaciente(this.paciente,this.id_usuario).subscribe({
+    this.pacienteServicio.agregarPaciente(this.paciente, this.id_usuario).subscribe({
       next: (datos) => this.goToPacientes()
     })
   }
