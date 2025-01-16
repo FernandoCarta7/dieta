@@ -1,37 +1,83 @@
 <div class="container top1">
+    <form class="d-flex" role="search">
+        <div class="input-group mb-3">
+            <input  class="form-control me-2" 
+                    type="search" 
+                    placeholder="Filtrar primer nombre" 
+                    aria-label="Buscar"
+                    name="nombreFiltrar"
+                    [(ngModel)]="primerNombre">
+            
+        </div>
+        <div class="input-group mb-3">
+            <input class="form-control me-2" 
+            type="search" 
+            placeholder="Filtrar primer apellido" 
+            aria-label="Buscar" 
+            disabled>
+        </div>
+        <div class="input-group mb-3">
+            
+            <select class="form-select" 
+            aria-label="Default select example" 
+            aria-label="genero" 
+            name="generoFiltrar"            
+            [(ngModel)]="generoFiltrar" disabled="true">
+                
+                <option value="">Filtrar por género</option>
+                <option value="Masculino">MASCULINO</option>
+                <option value="Feminino">FEMENINO</option>
+            </select>
+        </div>
+    </form>
+    <div>
+        <button class="btn bg-dark-blue" 
+                type="reset"
+                (click)="filtrarPaciente()">
+                <i class="bi bi-funnel"></i> Filtrar
+        </button>
+        <button class="btn bg-purple" 
+                type="reset"
+                (click)="resetLista()">
+                <i class="bi bi-list-task"></i> Listar
+        </button>
+    </div>
+    <br>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4" >
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col" *ngFor="let paciente of pacientes">
             <div class="card bgBlue">
                 <!--Descomentar para agregar imagen-->
                 <!--<img src="..." class="card-img-top" alt="...">-->
                 <div class="card-body">
-                    <h5 class="card-title">{{ paciente.primer_nombre + " " + paciente.primer_apellido }}</h5>
+                    <h5 class="card-title">{{ paciente.primerNombre + " " + paciente.primerApellido }}</h5>
                     <p class="card-text">Altura: <span>{{ paciente.altura }} cm</span></p>
                     <p class="card-text">Peso: <span>{{ paciente.peso }} kg</span></p>
                     <p class="card-text">Genero: <span>{{ paciente.genero }}</span></p>
-                    <p class="card-text">Antecedentes médicos: <span>{{ paciente.antecedentes_medicos }}</span></p>
-                    <button class="btn btn-success" (click)="verPaciente(paciente.id)"><i class="bi bi-pencil-square"></i> Editar</button>
-                    <button class="btn btn-danger"><i class="bi bi-trash"></i> Eliminar</button>
+                    <p class="card-text">Antecedentes médicos: <span>{{ paciente.antecedentesMedicos }}</span></p>
+                    <button class="btn btn-success" (click)="verPaciente(paciente.id)"><i
+                            class="bi bi-pencil-square"></i> Editar</button>
+                    <button class="btn btn-danger" (click)="deletePaciente(paciente.id)"><i class="bi bi-trash"></i>
+                        Eliminar</button>
                 </div>
             </div>
         </div>
-        
-        
+
+
     </div>
 </div>
 <div class="container">
     <div class="d-flex justify-content-between align-items-center">
         <div>
             <label for="size">Mostrar:</label>
-        <select id="size" [(ngModel)]="this.size" (change)="onSizeChange(this.size)">
-            <option *ngFor="let option of [5, 10, 15]" [value]="option">
-                {{ option }}
-            </option>
-        </select>
+            <select id="size" [(ngModel)]="this.size" (change)="onSizeChange(this.size)">
+                <option *ngFor="let option of [5, 10, 15]" [value]="option">
+                    {{ option }}
+                </option>
+            </select>
+        </div>
+        <pagination class="pagination" [maxSize]="7" [totalItems]="this.totalElements" [(ngModel)]="this.page"
+            [itemsPerPage]="this.size" (pageChanged)="onPageChange($event.page)">
+        </pagination>
     </div>
-    <pagination class="pagination" [maxSize]="7" [totalItems]="this.totalElements" [(ngModel)]="this.page"
-    [itemsPerPage]="this.size" (pageChanged)="onPageChange($event.page)">
-    </pagination>
-</div>
 </div>

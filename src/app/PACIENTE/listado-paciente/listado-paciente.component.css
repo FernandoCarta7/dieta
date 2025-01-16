@@ -15,3 +15,12 @@ button{
     margin: 0.2rem;
     color: #EAD8B1;
 }
+.bg-dark-blue{
+    background: #001F3F;
+    color: #FF6500;
+}
+
+.bg-purple{
+    background: #7C00FE;
+    color: #F9E400;
+}

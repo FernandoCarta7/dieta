@@ -16,10 +16,11 @@ export class PacienteService {
   private urlGetPaciente = 'http://localhost:8080/dieta-app/paciente/obtenerPaciente';
   private urlGetPacientePorIdUsuario = 'http://localhost:8080/dieta-app/paciente/obtenerPacienteIdUsuario';
   private urlEditar = 'http://localhost:8080/dieta-app/editar-paciente'
+  private urlFiltrar = 'http://localhost:8080/dieta-app/pacientes-pageable/filtrar-nombre'
 
   constructor(private http: HttpClient) { }
 
-  obtenerPacientes(page: number, size: number): Observable<PaginatedResponse<Paciente>> {
+  obtenerPacientes(page: number, size: number) : Observable<PaginatedResponse<Paciente>> {
     const params = new HttpParams().set('page', page).set('size', size);
 
     return this.http.get<PaginatedResponse<Paciente>>(this.urlBase, { params });
@@ -43,5 +44,10 @@ export class PacienteService {
 
   editarPaciente( idUsuario, pacienteEditar : Paciente ){
     return this.http.put(`${this.urlEditar}/${idUsuario}`,pacienteEditar)
+  }
+
+  filtrarPacientes( page: number, size: number, primerNombre : String ) : Observable<PaginatedResponse<Paciente>> {
+    const params = new HttpParams().set('page', page).set('size', size);
+    return this.http.get<PaginatedResponse<Paciente>>(`${this.urlFiltrar}/${primerNombre}`,{params})
   }
 }

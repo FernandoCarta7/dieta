@@ -19,6 +19,8 @@ export class ListadoPacienteComponent {
   page: number = 0;
   size: number = 10;
   totalElements: number = 0;
+  primerNombre : String;
+  generoFiltrar : String;
 
   constructor(private pacienteService : PacienteService,
               private router : Router
@@ -53,6 +55,31 @@ export class ListadoPacienteComponent {
 
   verPaciente( id:number ){
     this.router.navigate(['editar-paciente', id]);
+  }
+
+  deletePaciente( id : number ){
+    this.pacienteService.eliminarPaciente( id ).subscribe({
+      next: datos => this.obtenerPacientes()
+      //error: errores=>console.log(errores)
+      
+    })
+  }
+
+  filtrarPaciente(  ){
+    this.page = 0;
+    this.size = 10;
+    this.pacienteService.filtrarPacientes(this.page,this.size, this.primerNombre).subscribe(
+      response => {
+        
+        this.pacientes = response.content
+        this.totalElements = response.totalElements
+        
+      }
+    )
+    
+  }
+  resetLista(){
+    this.ngOnInit();
   }
 
 }

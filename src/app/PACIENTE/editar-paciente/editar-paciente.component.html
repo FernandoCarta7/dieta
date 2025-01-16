@@ -1,6 +1,6 @@
 <br>
 <div class="container">
-    <h3>Paciente a editar: <span>{{paciente.primer_nombre}}  {{paciente.primer_apellido}}</span></h3>
+    <h3>Paciente a editar: <span>{{paciente.primerNombre}}  {{paciente.primerApellido}}</span></h3>
     <div class="input-group mb-3">
         <span class="input-group-text">Peso</span>
         <input  type="number" 
@@ -25,13 +25,13 @@
                 class="form-control" 
                 aria-label="primer_nombre" 
                 name="primer_nombre" 
-                [(ngModel)]="paciente.primer_nombre">
+                [(ngModel)]="paciente.primerNombre">
         <span class="input-group-text">Segundo nombre</span>
         <input  type="text" 
                 class="form-control" 
                 aria-label="segundo_nombre" 
                 name="segundo_nombre" 
-                [(ngModel)]="paciente.segundo_nombre">
+                [(ngModel)]="paciente.segundoNombre">
     </div>
 
     <div class="input-group mb-3">
@@ -40,13 +40,13 @@
                 class="form-control" 
                 aria-label="primer_apellido" 
                 name="primer_apellido" 
-                [(ngModel)]="paciente.primer_apellido">
+                [(ngModel)]="paciente.primerApellido">
         <span class="input-group-text">Segundo apellido</span>
         <input  type="text" 
                 class="form-control" 
                 aria-label="segundo_apellido" 
                 name="segundo_apellido" 
-                [(ngModel)]="paciente.segundo_apellido">
+                [(ngModel)]="paciente.segundoApellido">
     </div>
 
     <div class="input-group mb-3">
@@ -56,7 +56,7 @@
                 class="form-control" 
                 aria-label="antecedentes_medicos"
                  name="antecedentes_medicos" 
-                [(ngModel)]="paciente.antecedentes_medicos"></textarea>
+                [(ngModel)]="paciente.antecedentesMedicos"></textarea>
     </div>
 
     <div class="input-group mb-3">
@@ -66,7 +66,7 @@
         class="form-control" 
         aria-label="fecha_nacimiento" 
         name="fecha_nacimiento" 
-        [(ngModel)]="paciente.fecha_nacimiento">
+        [(ngModel)]="paciente.fechaNacimiento">
     </div>
     <div class="input-group mb-3">
         <select class="form-select" 
