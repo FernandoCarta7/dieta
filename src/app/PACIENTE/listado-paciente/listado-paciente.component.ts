@@ -20,7 +20,10 @@ export class ListadoPacienteComponent {
   size: number = 10;
   totalElements: number = 0;
   primerNombre : String;
+  apellido : String;
   generoFiltrar : String;
+  banderaNombre: boolean;
+  banderaApellido: boolean;
 
   constructor(private pacienteService : PacienteService,
               private router : Router
@@ -28,6 +31,10 @@ export class ListadoPacienteComponent {
 
   ngOnInit(){
     //Cargamos los productos
+    this.primerNombre = null;
+    this.apellido = null;
+    this.banderaApellido = true;
+    this.banderaNombre = true;
     this.obtenerPacientes();
   }
 
@@ -68,17 +75,33 @@ export class ListadoPacienteComponent {
   filtrarPaciente(  ){
     this.page = 0;
     this.size = 10;
-    this.pacienteService.filtrarPacientes(this.page,this.size, this.primerNombre).subscribe(
-      response => {
-        
-        this.pacientes = response.content
-        this.totalElements = response.totalElements
-        
-      }
-    )
+    if(this.primerNombre !== null){
+      this.banderaApellido = false;
+      this.pacienteService.filtrarPacientes(this.page,this.size, this.primerNombre).subscribe(
+        response => {
+          
+          this.pacientes = response.content
+          this.totalElements = response.totalElements
+          
+        }
+      )
+    }else if (this.apellido.length !== null){
+      this.banderaNombre = false;
+      this.pacienteService.filtrarPacientesApellido(this.page,this.size, this.apellido).subscribe(
+        response => {
+          
+          this.pacientes = response.content
+          this.totalElements = response.totalElements
+          
+        }
+      )
+    }
+    
     
   }
   resetLista(){
+    this.banderaApellido = true;
+    this.banderaNombre = true;
     this.ngOnInit();
   }
 
