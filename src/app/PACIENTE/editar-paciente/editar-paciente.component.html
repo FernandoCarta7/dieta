@@ -23,14 +23,14 @@
         <span class="input-group-text">Primer nombre</span>
         <input  type="text" 
                 class="form-control" 
-                aria-label="primer_nombre" 
-                name="primer_nombre" 
+                aria-label="primerNombre" 
+                name="primerNombre" 
                 [(ngModel)]="paciente.primerNombre">
         <span class="input-group-text">Segundo nombre</span>
         <input  type="text" 
                 class="form-control" 
-                aria-label="segundo_nombre" 
-                name="segundo_nombre" 
+                aria-label="segundoNombre" 
+                name="segundoNombre" 
                 [(ngModel)]="paciente.segundoNombre">
     </div>
 
@@ -38,14 +38,14 @@
         <span class="input-group-text">Primer apellido</span>
         <input  type="text" 
                 class="form-control" 
-                aria-label="primer_apellido" 
-                name="primer_apellido" 
+                aria-label="primerApellido" 
+                name="primerApellido" 
                 [(ngModel)]="paciente.primerApellido">
         <span class="input-group-text">Segundo apellido</span>
         <input  type="text" 
                 class="form-control" 
-                aria-label="segundo_apellido" 
-                name="segundo_apellido" 
+                aria-label="segundoApellido" 
+                name="segundoApellido" 
                 [(ngModel)]="paciente.segundoApellido">
     </div>
 
@@ -54,8 +54,8 @@
         <textarea 
                 type="text" 
                 class="form-control" 
-                aria-label="antecedentes_medicos"
-                 name="antecedentes_medicos" 
+                aria-label="antecedentesMedicos"
+                 name="antecedentesMedicos" 
                 [(ngModel)]="paciente.antecedentesMedicos"></textarea>
     </div>
 
@@ -64,14 +64,13 @@
         <input 
         type="date" 
         class="form-control" 
-        aria-label="fecha_nacimiento" 
-        name="fecha_nacimiento" 
+        aria-label="fechaNacimiento" 
+        name="fechaNacimiento" 
         [(ngModel)]="paciente.fechaNacimiento">
     </div>
     <div class="input-group mb-3">
         <select class="form-select" 
-        aria-label="Default select example" 
-        aria-label="genero" 
+        aria-label="genero"        
         name="genero" 
         [(ngModel)]="paciente.genero">
             <option value="Masculino">MASCULINO</option>

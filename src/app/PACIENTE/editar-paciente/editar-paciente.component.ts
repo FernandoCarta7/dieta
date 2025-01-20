@@ -18,7 +18,7 @@ export class EditarPacienteComponent {
 
   paciente: Paciente = new Paciente();
   //paciente2: Paciente = new Paciente();
-  id_usuario: number;
+  usuarioid: number;
   id: number;
   pacienteBuscar: Paciente = new Paciente();
   bandera = true;
@@ -30,23 +30,23 @@ export class EditarPacienteComponent {
   ) { }
 
   ngOnInit() {
-    this.id_usuario = this.ruta.snapshot.params['id_usuario'];
+    this.usuarioid = this.ruta.snapshot.params['usuarioid'];
     this.id = this.ruta.snapshot.params['id'];
 
-    if (this.id_usuario === undefined || this.id_usuario === null) {
-      this.pacienteServicio.getPaciente(this.id).subscribe(
+    if (this.usuarioid === undefined || this.usuarioid === null) {
+      this.pacienteServicio.getPacientePorUsuario(this.id).subscribe(
         {
           next: (datos) => {
             this.paciente = new Paciente();
             this.paciente = datos;
-            this.id_usuario = this.paciente.usuarioid;
+            this.usuarioid = this.paciente.usuarioid;
             this.bandera = true; 
           },
           error: (errores: any) => console.log(errores)
         }
       );
     } else {
-      this.pacienteServicio.getPacientePorUsuario(this.id_usuario).subscribe(
+      this.pacienteServicio.getPaciente(this.usuarioid).subscribe(
         {
           next: (datos) => {
             this.paciente = new Paciente();
@@ -66,18 +66,18 @@ export class EditarPacienteComponent {
 
   }
   guardarPacienteEditar() {
-    this.pacienteServicio.editarPaciente(this.id_usuario, this.paciente).subscribe(
+    this.pacienteServicio.editarPaciente(this.usuarioid, this.paciente).subscribe(
       {
         next: (datos) => this.goToPacientes(),
         error: errores => console.log('No es un error, es una oportunidad de mejora')
       }
     )
-    this.pacienteServicio.editarPaciente(this.id_usuario, this.paciente);
+    this.pacienteServicio.editarPaciente(this.usuarioid, this.paciente);
 
   }
 
   guardarPaciente() {
-    this.pacienteServicio.agregarPaciente(this.paciente, this.id_usuario).subscribe({
+    this.pacienteServicio.agregarPaciente(this.paciente, this.usuarioid).subscribe({
       next: (datos) => this.goToPacientes()
     })
   }
