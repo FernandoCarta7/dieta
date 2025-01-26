@@ -104,5 +104,9 @@ export class ListadoPacienteComponent {
     this.banderaNombre = true;
     this.ngOnInit();
   }
+  goToRegistro(){
+    this.router.navigate(['registro-usuario']);
+  }
+
 
 }

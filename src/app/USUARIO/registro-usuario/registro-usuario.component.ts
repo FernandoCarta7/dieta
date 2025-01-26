@@ -6,10 +6,11 @@ import { UsuarioService } from '../../Servicio/UsuarioService.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RegitroPacienteComponent } from "../../PACIENTE/regitro-paciente/regitro-paciente.component";
 
 @Component({
   selector: 'registro-usuario',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule, RegitroPacienteComponent],
   templateUrl: './registro-usuario.component.html',
   styleUrl: './registro-usuario.component.css'
 })
@@ -23,6 +24,11 @@ export class RegistroUsuarioComponent {
   paciente: Paciente = new Paciente();
   contrasenaValidar : string;
 
+  ngOnInit(){
+    this.usuario.email = null;
+    this.usuario.contrasena = "";
+  }
+
   constructor(private pacienteServicio: PacienteService,
     private usuarioServicio: UsuarioService,
     private router: Router) { }
@@ -32,7 +38,8 @@ export class RegistroUsuarioComponent {
     this.usuarioServicio.agregarUsuario(this.usuario).subscribe(
       {
         next: (datos) => {
-          this.irListadoUsuarios();
+          
+          //this.irListadoUsuarios();
         },
         error: (error: any) => { console.log("NO es un error, ES una oportunidad de mejora") }
       }
@@ -46,6 +53,21 @@ export class RegistroUsuarioComponent {
 
   onSubmitUsuario(){
     this.guardarUsuario();
+  }
+
+  onSubmitPaciente(){
+    
+    this.guardarPaciente();
+  }
+
+  guardarPaciente(){
+    this.usuarioServicio.getLastUser().subscribe({
+      next: (datos) => {
+        this.id = datos.id;
+        //console.log("Hola");
+      }
+    })
+    
   }
 
 

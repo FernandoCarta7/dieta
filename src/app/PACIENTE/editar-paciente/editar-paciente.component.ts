@@ -12,10 +12,9 @@ import { UsuarioService } from '../../Servicio/UsuarioService.service';
   selector: 'app-editar-paciente',
   imports: [FormsModule, CommonModule],
   templateUrl: './editar-paciente.component.html',
-  styleUrl: './editar-paciente.component.css'
+  styleUrl: './editar-paciente.component.css',
 })
 export class EditarPacienteComponent {
-
   paciente: Paciente = new Paciente();
   //paciente2: Paciente = new Paciente();
   usuarioid: number;
@@ -23,63 +22,43 @@ export class EditarPacienteComponent {
   pacienteBuscar: Paciente = new Paciente();
   bandera = true;
 
-  constructor(private pacienteServicio: PacienteService,
+  constructor(
+    private pacienteServicio: PacienteService,
     private router: Router,
     private ruta: ActivatedRoute,
-    private usuarioServicio : UsuarioService
-  ) { }
+    private usuarioServicio: UsuarioService
+  ) {}
 
   ngOnInit() {
-    this.usuarioid = this.ruta.snapshot.params['usuarioid'];
     this.id = this.ruta.snapshot.params['id'];
 
-    if (this.usuarioid === undefined || this.usuarioid === null) {
-      this.pacienteServicio.getPacientePorUsuario(this.id).subscribe(
-        {
-          next: (datos) => {
-            this.paciente = new Paciente();
-            this.paciente = datos;
-            this.usuarioid = this.paciente.usuarioid;
-            this.bandera = true; 
-          },
-          error: (errores: any) => console.log(errores)
-        }
-      );
-    } else {
-      this.pacienteServicio.getPaciente(this.usuarioid).subscribe(
-        {
-          next: (datos) => {
-            this.paciente = new Paciente();
-            this.paciente = datos;
-            this.bandera = false;        
-          },
-          error: (errores: any) => console.log(errores)
-        }
-      );
-    }
-
-
-
-
-
-
-
+    this.pacienteServicio.getPaciente(this.id).subscribe({
+      next: (datos) => {
+        this.paciente = new Paciente();
+        this.paciente = datos;
+        this.usuarioid = this.paciente.usuarioid;
+        this.bandera = true;
+      },
+      error: (errores: any) => console.log(errores),
+    });
   }
   guardarPacienteEditar() {
-    this.pacienteServicio.editarPaciente(this.usuarioid, this.paciente).subscribe(
-      {
+    this.pacienteServicio
+      .editarPaciente(this.usuarioid, this.paciente)
+      .subscribe({
         next: (datos) => this.goToPacientes(),
-        error: errores => console.log('No es un error, es una oportunidad de mejora')
-      }
-    )
+        error: (errores) =>
+          console.log('No es un error, es una oportunidad de mejora'),
+      });
     this.pacienteServicio.editarPaciente(this.usuarioid, this.paciente);
-
   }
 
   guardarPaciente() {
-    this.pacienteServicio.agregarPaciente(this.paciente, this.usuarioid).subscribe({
-      next: (datos) => this.goToPacientes()
-    })
+    this.pacienteServicio
+      .agregarPaciente(this.paciente, this.usuarioid)
+      .subscribe({
+        next: (datos) => this.goToPacientes(),
+      });
   }
 
   goToPacientes() {

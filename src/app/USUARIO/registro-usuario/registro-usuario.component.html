@@ -4,38 +4,71 @@
       <h3>Registrar Usuario</h3>
 
       <div class="input-group mb-3">
-
         <!-- NOMBRE DE USUARIO -->
-        
-        
+
         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
 
         <!--EMAIL-->
-        <input type="email" class="form-control" placeholder="Ingresa tu correo" aria-label="email" name="email"
-          aria-describedby="basic-addon2" [(ngModel)]="usuario.email" />
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Ingresa tu correo"
+          aria-label="email"
+          name="email"
+          aria-describedby="basic-addon2"
+          [(ngModel)]="usuario.email"
+        />
       </div>
 
       <!--CONTRASEÑA-->
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon3"><i class="bi bi-incognito"></i></span>
-        <input type="password" class="form-control" placeholder="Ingresa tu contraseña" aria-label="contrasena"
-          name="contrasena" aria-describedby="basic-addon2" [(ngModel)]="usuario.contrasena" />
-        <span class="input-group-text" id="basic-addon4"><i class="bi bi-incognito"></i></span>
-        <input type="password" class="form-control" placeholder="Ingresa de nuevo tu contraseña"
-          aria-label="contrasenaValidacion" name="contrasenaValidacion" aria-describedby="basic-addon2"
-          [(ngModel)]="contrasenaValidar" />
+        <span class="input-group-text" id="basic-addon3"
+          ><i class="bi bi-incognito"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Ingresa tu contraseña"
+          aria-label="contrasena"
+          name="contrasena"
+          aria-describedby="basic-addon2"
+          [(ngModel)]="usuario.contrasena"
+        />
+        <span class="input-group-text" id="basic-addon4"
+          ><i class="bi bi-incognito"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Ingresa de nuevo tu contraseña"
+          aria-label="contrasenaValidacion"
+          name="contrasenaValidacion"
+          aria-describedby="basic-addon2"
+          [(ngModel)]="contrasenaValidar"
+        />
       </div>
     </div>
 
-
-    <div>
-      <button (click)="onSubmitUsuario()" class="btn btn-primary">
+    <div
+      *ngIf="
+        usuario.email !== null &&
+        usuario.contrasena !== '' &&
+        usuario.contrasena == contrasenaValidar
+      "
+    >
+      <button
+        (click)="onSubmitUsuario()"
+        class="btn bg-dark-blue"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
         <i class="bi bi-floppy"></i> Registrar
       </button>
-      <button type="reset" class="btn btn-warning" (click)="irListadoUsuarios()">
+      <button type="reset" class="btn bg-purple" (click)="irListadoUsuarios()">
         <i class="bi bi-card-list"></i> Listado
       </button>
     </div>
-
   </div>
 </div>
+
+<app-regitro-paciente></app-regitro-paciente>

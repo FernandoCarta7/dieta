@@ -7,3 +7,14 @@ h3{
     margin-left: 1rem;
     color: #213555;
 }
+.bg-dark-blue{
+    background: #001F3F;
+    color: white;
+}
+.bg-purple{
+    background: #7C00FE;
+    color: #F9E400;
+}
+label{
+    color: #213555;
+}

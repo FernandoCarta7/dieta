@@ -1,1 +1,131 @@
-<p>regitro-paciente works!</p>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo paciente</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="primerNombre" class="col-form-label"
+              >Primer nombre</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="primerNombre"
+              name="primerNombre"
+              [(ngModel)]="paciente.primerNombre"
+            />
+            <label for="segundoNombre" class="col-form-label"
+              >Segundo nombre</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="segundoNombre"
+              name="segundoNombre"
+              [(ngModel)]="paciente.segundoNombre"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="primerApellido" class="col-form-label"
+              >Primer apellido</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="primerApellido"
+              name="primerApellido"
+              [(ngModel)]="paciente.primerApellido"
+            />
+            <label for="segundoApellido" class="col-form-label"
+              >Segundo apellido</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="segundoApellido"
+              name="segundoApellido"
+              [(ngModel)]="paciente.segundoApellido"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="peso" class="col-form-label">Peso</label>
+            <input
+              type="number"
+              class="form-control"
+              id="peso"
+              name="peso"
+              [(ngModel)]="paciente.peso"
+            />
+            <label for="altura" class="col-form-label">Altura</label>
+            <input
+              type="number"
+              class="form-control"
+              id="altura"
+              name="altura"
+              [(ngModel)]="paciente.altura"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="col-form-label"
+              >Fecha nacimiento</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="fechaNacimiento"
+              name="fechaNacimiento"
+              [(ngModel)]="paciente.fechaNacimiento"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <select
+              class="form-select"
+              aria-label="genero"
+              name="genero"
+              [(ngModel)]="paciente.genero"
+            >
+              <option value="Masculino">MASCULINO</option>
+              <option value="Feminino">FEMENINO</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="antecedentesMedicos" class="col-form-label"
+              >Antecedentes medicos</label
+            >
+            <textarea
+              class="form-control"
+              id="antecedentesMedicos"
+              name="antecedentesMedicos"
+              [(ngModel)]="paciente.antecedentesMedicos"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          (click)="onSubmitPaciente()"
+          type="button"
+          class="btn bg-dark-blue"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

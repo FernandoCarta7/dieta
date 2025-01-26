@@ -14,7 +14,7 @@ export class UsuarioService {
     private urlAgregar = 'http://localhost:8080/dieta-app/usuario/agregar';
     private urlEditarUsuario = 'http://localhost:8080/dieta-app/usuario/editar';
     private urlGetUsuario = 'http://localhost:8080/dieta-app/usuario/obtenerUsuario';
-
+    private urlGetLastUser = 'http://localhost:8080/dieta-app/usuario/getLastUser';
 
     constructor(private http: HttpClient) { } 
 
@@ -40,6 +40,9 @@ export class UsuarioService {
     editarUsuario(id : number, usuario: Usuario) : Observable<Object> {
         return this.http.put(`${this.urlEditarUsuario}/${id}`, usuario);
 
+    }
+    getLastUser(){
+        return this.http.get<Usuario>(this.urlGetLastUser);
     }
 
 }
