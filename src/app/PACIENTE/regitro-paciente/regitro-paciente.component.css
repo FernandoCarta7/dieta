@@ -1,0 +1,14 @@
+.bg-dark-blue{
+    background-color: #09122C;
+    color: #EAD8B1;
+}
+small{
+    color: #F5004F;
+    font-size: 0.70rem;
+    font-style: italic;
+    font-weight: bold;
+}
+label, h1{
+    color: #09122C;
+    
+}

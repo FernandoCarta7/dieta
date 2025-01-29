@@ -14,6 +14,7 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          
         ></button>
       </div>
       <div class="modal-body">
@@ -27,8 +28,14 @@
               class="form-control"
               id="primerNombre"
               name="primerNombre"
-              [(ngModel)]="paciente.primerNombre"
+              class="form-control"
+              required="true"
+              minlength="4"
+              [(ngModel)]="primerNombre"
             />
+            <div *ngIf="primerNombre == null">
+              <small>El primer nombre es requerido</small>
+            </div>
             <label for="segundoNombre" class="col-form-label"
               >Segundo nombre</label
             >
@@ -37,7 +44,8 @@
               class="form-control"
               id="segundoNombre"
               name="segundoNombre"
-              [(ngModel)]="paciente.segundoNombre"
+              minlength="4"
+              [(ngModel)]="segundoNombre"
             />
           </div>
           <div class="mb-3">
@@ -49,8 +57,13 @@
               class="form-control"
               id="primerApellido"
               name="primerApellido"
-              [(ngModel)]="paciente.primerApellido"
+              required="true"
+              minlength="4"
+              [(ngModel)]="primerApellido"
             />
+            <div *ngIf="primerApellido == null">
+              <small>El primer apellido es requerido</small>
+            </div>
             <label for="segundoApellido" class="col-form-label"
               >Segundo apellido</label
             >
@@ -59,26 +72,35 @@
               class="form-control"
               id="segundoApellido"
               name="segundoApellido"
-              [(ngModel)]="paciente.segundoApellido"
+              minlength="4"
+              [(ngModel)]="segundoApellido"
             />
           </div>
           <div class="mb-3">
-            <label for="peso" class="col-form-label">Peso</label>
+            <label for="peso" class="col-form-label">Peso (kg)</label>
             <input
               type="number"
               class="form-control"
               id="peso"
               name="peso"
-              [(ngModel)]="paciente.peso"
+              required="true"
+              min="15"
+              [(ngModel)]="peso"
             />
-            <label for="altura" class="col-form-label">Altura</label>
+            <div *ngIf="peso == 0.0"><small>El peso es requerido</small></div>
+            <label for="altura" class="col-form-label">Altura (cm)</label>
             <input
               type="number"
               class="form-control"
               id="altura"
               name="altura"
-              [(ngModel)]="paciente.altura"
+              required="true"
+              min="40"
+              [(ngModel)]="altura"
             />
+            <div *ngIf="(altura == 0.0)">
+              <small>La altura es requerida</small>
+            </div>
           </div>
           <div class="mb-3">
             <label for="fechaNacimiento" class="col-form-label"
@@ -89,19 +111,28 @@
               class="form-control"
               id="fechaNacimiento"
               name="fechaNacimiento"
-              [(ngModel)]="paciente.fechaNacimiento"
+              required="true"
+              [(ngModel)]="fechaNacimiento"
             />
+            <div *ngIf="fechaNacimiento == null">
+              <small>La fecha de nacimiento es requerida</small>
+            </div>
           </div>
           <div class="input-group mb-3">
             <select
               class="form-select"
               aria-label="genero"
               name="genero"
-              [(ngModel)]="paciente.genero"
+              required="true"
+              [(ngModel)]="genero"
             >
               <option value="Masculino">MASCULINO</option>
               <option value="Feminino">FEMENINO</option>
             </select>
+            
+            <div *ngIf="genero == null">
+              <small>El género es requerido</small>
+            </div>
           </div>
           <div class="mb-3">
             <label for="antecedentesMedicos" class="col-form-label"
@@ -111,8 +142,12 @@
               class="form-control"
               id="antecedentesMedicos"
               name="antecedentesMedicos"
-              [(ngModel)]="paciente.antecedentesMedicos"
+              required="true"
+              [(ngModel)]="antecedentesMedicos"
             ></textarea>
+            <div *ngIf="antecedentesMedicos == null">
+              <small>Los antecedentes médicos son requeridos</small>
+            </div>
           </div>
         </form>
       </div>
